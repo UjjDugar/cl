@@ -64,7 +64,7 @@ all_input_ids = []
 all_labels = []
 all_attention_masks = []
 
-for i in tqdm(range(index*25, (index+1)*25)):
+for i in tqdm(range(index*150000, (index+1)*150000)):
     row = dataset[i]
     
     transcript = row['transcript']
