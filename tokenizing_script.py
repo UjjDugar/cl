@@ -11,8 +11,8 @@ import argparse
 
 
 def convert_waveform_to_tokens(waveform, verbose=False):
+
     # waveform is 24k and the output of torchaudio.functional.resample(waveform, sr, 24000)
-    tokenizing_model = SNAC.from_pretrained("hubertsiuzdak/snac_24khz").eval().cuda()
 
     waveform = waveform.cuda()
     with torch.inference_mode():
@@ -45,6 +45,8 @@ def get_hf_formatted_data(speech_tokens, transcript_tokens, tts_token_id, eos_to
     labels = [-100] * (len(transcript_tokens['input_ids']) + 1) + speech_tokens + [eos_token_id]
     attention_mask = [1] * len(input_ids)
     return input_ids, labels, attention_mask
+
+tokenizing_model = SNAC.from_pretrained("hubertsiuzdak/snac_24khz").eval().cuda()
 
 parser = argparse.ArgumentParser(description="A script that takes command-line arguments.")
 parser.add_argument("index", type=str, help="Index (0->7)")
