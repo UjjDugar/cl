@@ -1,0 +1,24 @@
+from datasets import load_dataset, concatenate_datasets
+from huggingface_hub import login
+
+# Login to Hugging Face
+login(token="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")
+
+# Load all datasets
+datasets = []
+for i in range(7):
+    dataset = load_dataset(f"UjjD/tts_mini_data_{i}", split="train")
+    datasets.append(dataset)
+
+# Concatenate all datasets
+combined_dataset = concatenate_datasets(datasets)
+
+# Shuffle the combined dataset
+combined_dataset = combined_dataset.shuffle(seed=42)
+
+# Push to the Hub
+combined_dataset.push_to_hub("UjjD/tts_mini_data_1.05M", private=False)
+
+print(f"Combined dataset has {len(combined_dataset)} examples")
+print("Dataset columns:", combined_dataset.column_names)
+print("Sample from combined dataset:", combined_dataset[0])

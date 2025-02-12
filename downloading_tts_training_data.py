@@ -1,7 +1,7 @@
 from huggingface_hub import snapshot_download
 from datasets import load_dataset
 
-repo_id = "parler-tts/mls_eng_10k"
+repo_id = "UjjD/tts_mini_data_1.05M"
 
 snapshot_download(
     repo_id=repo_id,

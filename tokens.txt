@@ -1,1 +1,3 @@
-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
+hf: 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
+
+wandb: 0a6c8de726025aca725a2bb24178045a0b08cc25
