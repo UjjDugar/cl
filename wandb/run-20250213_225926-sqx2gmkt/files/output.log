@@ -1,0 +1,169 @@
+/usr/local/lib/python3.10/dist-packages/accelerate/accelerator.py:1585: UserWarning: Upcasted low precision parameters in LlamaForCausalLM because mixed precision turned on in FSDP. Affects: model.embed_tokens.weight, model.norm.weight.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/accelerate/accelerator.py:1585: UserWarning: Upcasted low precision parameters in LlamaDecoderLayer because mixed precision turned on in FSDP. Affects: self_attn.q_proj.weight, self_attn.k_proj.weight, self_attn.v_proj.weight, self_attn.o_proj.weight, mlp.gate_proj.weight, mlp.up_proj.weight, mlp.down_proj.weight, input_layernorm.weight, post_attention_layernorm.weight.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/accelerate/accelerator.py:1591: UserWarning: FSDP upcast of low precision parameters may affect the precision of model checkpoints.
+  warnings.warn(
+[34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+                                                                                                                                                                                                                         
+{'loss': 18.2585, 'grad_norm': 881.3865966796875, 'learning_rate': 4.9999999992838386e-05, 'epoch': 0.0}
+{'loss': 17.119, 'grad_norm': 604.5296020507812, 'learning_rate': 4.999999997135353e-05, 'epoch': 0.0}
+{'loss': 13.3577, 'grad_norm': 46.260520935058594, 'learning_rate': 4.9999999935545444e-05, 'epoch': 0.0}
+{'loss': 13.0143, 'grad_norm': 12.134268760681152, 'learning_rate': 4.999999988541412e-05, 'epoch': 0.0}
+{'loss': 12.6929, 'grad_norm': 13.690317153930664, 'learning_rate': 4.999999982095956e-05, 'epoch': 0.0}
+{'loss': 13.0443, 'grad_norm': 12.687692642211914, 'learning_rate': 4.999999974218177e-05, 'epoch': 0.0}
+{'loss': 12.2722, 'grad_norm': 6.828792572021484, 'learning_rate': 4.999999964908074e-05, 'epoch': 0.0}
+{'loss': 12.1034, 'grad_norm': 6.2895708084106445, 'learning_rate': 4.9999999541656475e-05, 'epoch': 0.0}
+{'loss': 11.9679, 'grad_norm': 2.069232225418091, 'learning_rate': 4.9999999419908973e-05, 'epoch': 0.0}
+{'loss': 11.8608, 'grad_norm': 0.9430267810821533, 'learning_rate': 4.999999928383824e-05, 'epoch': 0.0}
+{'loss': 11.7593, 'grad_norm': 0.8076998591423035, 'learning_rate': 4.999999913344427e-05, 'epoch': 0.0}
+{'loss': 11.6417, 'grad_norm': 0.9193663597106934, 'learning_rate': 4.9999998968727055e-05, 'epoch': 0.0}
+{'loss': 11.4824, 'grad_norm': 0.9895442128181458, 'learning_rate': 4.999999878968662e-05, 'epoch': 0.0}
+{'loss': 11.3152, 'grad_norm': 1.2074321508407593, 'learning_rate': 4.999999859632294e-05, 'epoch': 0.0}
+{'loss': 11.1282, 'grad_norm': 1.1738890409469604, 'learning_rate': 4.999999838863604e-05, 'epoch': 0.0}
+{'loss': 10.8706, 'grad_norm': 1.306243658065796, 'learning_rate': 4.999999816662589e-05, 'epoch': 0.0}
+{'loss': 10.6514, 'grad_norm': 1.3744958639144897, 'learning_rate': 4.999999793029251e-05, 'epoch': 0.0}
+{'loss': 10.5457, 'grad_norm': 1.2746914625167847, 'learning_rate': 4.99999976796359e-05, 'epoch': 0.0}
+{'loss': 10.3603, 'grad_norm': 1.295449137687683, 'learning_rate': 4.999999741465605e-05, 'epoch': 0.0}
+{'loss': 10.3048, 'grad_norm': 1.217431902885437, 'learning_rate': 4.999999713535297e-05, 'epoch': 0.0}
+{'loss': 10.1374, 'grad_norm': 1.3570853471755981, 'learning_rate': 4.9999996841726657e-05, 'epoch': 0.0}
+{'loss': 10.1372, 'grad_norm': 1.2234933376312256, 'learning_rate': 4.9999996533777115e-05, 'epoch': 0.0}
+{'loss': 9.991, 'grad_norm': 1.3470311164855957, 'learning_rate': 4.999999621150433e-05, 'epoch': 0.0}
+{'loss': 9.9546, 'grad_norm': 1.2946584224700928, 'learning_rate': 4.9999995874908316e-05, 'epoch': 0.0}
+{'loss': 9.9804, 'grad_norm': 1.1508598327636719, 'learning_rate': 4.999999552398907e-05, 'epoch': 0.0}
+{'loss': 10.1134, 'grad_norm': 1.2726725339889526, 'learning_rate': 4.9999995158746594e-05, 'epoch': 0.0}
+{'loss': 9.9721, 'grad_norm': 1.272653579711914, 'learning_rate': 4.999999477918088e-05, 'epoch': 0.0}
+{'loss': 9.9422, 'grad_norm': 1.1424833536148071, 'learning_rate': 4.999999438529193e-05, 'epoch': 0.0}
+{'loss': 9.8614, 'grad_norm': 1.2556095123291016, 'learning_rate': 4.999999397707975e-05, 'epoch': 0.0}
+{'loss': 9.9745, 'grad_norm': 1.1665014028549194, 'learning_rate': 4.999999355454434e-05, 'epoch': 0.0}
+{'loss': 9.8307, 'grad_norm': 1.156794786453247, 'learning_rate': 4.9999993117685704e-05, 'epoch': 0.0}
+{'loss': 10.0344, 'grad_norm': 1.197047472000122, 'learning_rate': 4.999999266650383e-05, 'epoch': 0.0}
+{'loss': 9.9217, 'grad_norm': 1.1814483404159546, 'learning_rate': 4.999999220099872e-05, 'epoch': 0.0}
+{'loss': 9.8904, 'grad_norm': 1.156516432762146, 'learning_rate': 4.9999991721170395e-05, 'epoch': 0.0}
+{'loss': 9.8306, 'grad_norm': 1.2291749715805054, 'learning_rate': 4.999999122701883e-05, 'epoch': 0.0}
+{'loss': 9.9043, 'grad_norm': 1.060011386871338, 'learning_rate': 4.9999990718544034e-05, 'epoch': 0.0}
+{'loss': 9.8508, 'grad_norm': 1.1440091133117676, 'learning_rate': 4.9999990195746e-05, 'epoch': 0.0}
+{'loss': 9.8287, 'grad_norm': 1.2388174533843994, 'learning_rate': 4.9999989658624745e-05, 'epoch': 0.0}
+{'loss': 9.8356, 'grad_norm': 1.0491784811019897, 'learning_rate': 4.999998910718026e-05, 'epoch': 0.0}
+{'loss': 9.8781, 'grad_norm': 1.1876112222671509, 'learning_rate': 4.9999988541412546e-05, 'epoch': 0.0}
+{'loss': 9.718, 'grad_norm': 1.099429726600647, 'learning_rate': 4.9999987961321605e-05, 'epoch': 0.0}
+{'loss': 9.9051, 'grad_norm': 1.0998231172561646, 'learning_rate': 4.999998736690743e-05, 'epoch': 0.0}
+{'loss': 9.8806, 'grad_norm': 1.167863368988037, 'learning_rate': 4.9999986758170034e-05, 'epoch': 0.0}
+{'loss': 9.7951, 'grad_norm': 1.097589135169983, 'learning_rate': 4.99999861351094e-05, 'epoch': 0.0}
+{'loss': 9.8754, 'grad_norm': 1.0986393690109253, 'learning_rate': 4.9999985497725546e-05, 'epoch': 0.0}
+{'loss': 9.7779, 'grad_norm': 1.1342785358428955, 'learning_rate': 4.9999984846018465e-05, 'epoch': 0.0}
+{'loss': 9.9939, 'grad_norm': 1.0821560621261597, 'learning_rate': 4.999998417998816e-05, 'epoch': 0.0}
+{'loss': 9.8243, 'grad_norm': 1.06597900390625, 'learning_rate': 4.9999983499634624e-05, 'epoch': 0.0}
+{'loss': 9.7139, 'grad_norm': 1.2322406768798828, 'learning_rate': 4.999998280495786e-05, 'epoch': 0.0}
+{'loss': 9.7322, 'grad_norm': 1.1204770803451538, 'learning_rate': 4.9999982095957875e-05, 'epoch': 0.0}
+{'loss': 9.8476, 'grad_norm': 1.0281298160552979, 'learning_rate': 4.9999981372634666e-05, 'epoch': 0.0}
+{'loss': 9.7429, 'grad_norm': 1.0261906385421753, 'learning_rate': 4.9999980634988225e-05, 'epoch': 0.0}
+{'loss': 9.7613, 'grad_norm': 0.9968867897987366, 'learning_rate': 4.9999979883018564e-05, 'epoch': 0.0}
+{'loss': 9.7517, 'grad_norm': 1.059281826019287, 'learning_rate': 4.999997911672568e-05, 'epoch': 0.0}
+{'loss': 9.7317, 'grad_norm': 1.0528464317321777, 'learning_rate': 4.9999978336109574e-05, 'epoch': 0.0}
+{'loss': 9.8313, 'grad_norm': 1.0551947355270386, 'learning_rate': 4.999997754117024e-05, 'epoch': 0.0}
+{'loss': 9.8052, 'grad_norm': 1.0283089876174927, 'learning_rate': 4.999997673190768e-05, 'epoch': 0.0}
+{'loss': 9.7014, 'grad_norm': 1.0213593244552612, 'learning_rate': 4.999997590832191e-05, 'epoch': 0.0}
+{'loss': 9.7748, 'grad_norm': 0.987402617931366, 'learning_rate': 4.999997507041291e-05, 'epoch': 0.0}
+{'loss': 9.8521, 'grad_norm': 1.0090948343276978, 'learning_rate': 4.999997421818069e-05, 'epoch': 0.0}
+{'loss': 9.7957, 'grad_norm': 0.9104189276695251, 'learning_rate': 4.999997335162525e-05, 'epoch': 0.0}
+{'loss': 9.7906, 'grad_norm': 0.907335102558136, 'learning_rate': 4.999997247074659e-05, 'epoch': 0.0}
+{'loss': 9.798, 'grad_norm': 1.121506690979004, 'learning_rate': 4.9999971575544715e-05, 'epoch': 0.0}
+{'loss': 9.739, 'grad_norm': 1.0149837732315063, 'learning_rate': 4.9999970666019615e-05, 'epoch': 0.0}
+{'loss': 9.7208, 'grad_norm': 1.0741775035858154, 'learning_rate': 4.9999969742171296e-05, 'epoch': 0.0}
+{'loss': 9.7971, 'grad_norm': 1.0152019262313843, 'learning_rate': 4.9999968803999765e-05, 'epoch': 0.0}
+{'loss': 9.814, 'grad_norm': 0.9917310476303101, 'learning_rate': 4.9999967851505016e-05, 'epoch': 0.0}
+{'loss': 9.8562, 'grad_norm': 0.950796902179718, 'learning_rate': 4.999996688468704e-05, 'epoch': 0.0}
+{'loss': 9.8396, 'grad_norm': 0.9364466071128845, 'learning_rate': 4.9999965903545854e-05, 'epoch': 0.0}
+{'loss': 9.8932, 'grad_norm': 0.9925773739814758, 'learning_rate': 4.9999964908081455e-05, 'epoch': 0.0}
+{'loss': 9.8226, 'grad_norm': 1.0445317029953003, 'learning_rate': 4.999996389829383e-05, 'epoch': 0.0}
+{'loss': 9.7854, 'grad_norm': 0.9839161038398743, 'learning_rate': 4.9999962874183e-05, 'epoch': 0.0}
+{'loss': 9.7852, 'grad_norm': 0.8878470063209534, 'learning_rate': 4.999996183574895e-05, 'epoch': 0.0}
+{'loss': 9.8602, 'grad_norm': 0.8574687838554382, 'learning_rate': 4.999996078299169e-05, 'epoch': 0.0}
+{'loss': 9.8325, 'grad_norm': 0.8892251253128052, 'learning_rate': 4.999995971591123e-05, 'epoch': 0.0}
+{'loss': 9.6928, 'grad_norm': 1.0965814590454102, 'learning_rate': 4.9999958634507537e-05, 'epoch': 0.0}
+{'loss': 9.7755, 'grad_norm': 0.8232681155204773, 'learning_rate': 4.999995753878064e-05, 'epoch': 0.0}
+{'loss': 9.723, 'grad_norm': 0.8486695885658264, 'learning_rate': 4.999995642873053e-05, 'epoch': 0.0}
+{'loss': 9.7587, 'grad_norm': 0.9311546087265015, 'learning_rate': 4.999995530435721e-05, 'epoch': 0.0}
+{'loss': 9.7803, 'grad_norm': 0.931380569934845, 'learning_rate': 4.999995416566069e-05, 'epoch': 0.0}
+{'loss': 9.8251, 'grad_norm': 0.9894611239433289, 'learning_rate': 4.999995301264096e-05, 'epoch': 0.0}
+{'loss': 9.7664, 'grad_norm': 0.9836805462837219, 'learning_rate': 4.999995184529801e-05, 'epoch': 0.0}
+{'loss': 9.7755, 'grad_norm': 0.9158684015274048, 'learning_rate': 4.9999950663631855e-05, 'epoch': 0.0}
+{'loss': 9.7778, 'grad_norm': 0.9020981788635254, 'learning_rate': 4.9999949467642495e-05, 'epoch': 0.0}
+{'loss': 9.8224, 'grad_norm': 0.8246306777000427, 'learning_rate': 4.9999948257329924e-05, 'epoch': 0.0}
+{'loss': 9.809, 'grad_norm': 0.8805330991744995, 'learning_rate': 4.999994703269415e-05, 'epoch': 0.0}
+{'loss': 9.8185, 'grad_norm': 0.8774785995483398, 'learning_rate': 4.999994579373517e-05, 'epoch': 0.0}
+{'loss': 9.7936, 'grad_norm': 0.7728245854377747, 'learning_rate': 4.999994454045299e-05, 'epoch': 0.0}
+{'loss': 9.7564, 'grad_norm': 0.9242640137672424, 'learning_rate': 4.999994327284761e-05, 'epoch': 0.0}
+{'loss': 9.8751, 'grad_norm': 0.7976859211921692, 'learning_rate': 4.999994199091902e-05, 'epoch': 0.0}
+{'loss': 9.742, 'grad_norm': 0.9392589330673218, 'learning_rate': 4.999994069466722e-05, 'epoch': 0.0}
+{'loss': 9.7462, 'grad_norm': 0.9342290759086609, 'learning_rate': 4.999993938409223e-05, 'epoch': 0.0}
+{'loss': 9.7087, 'grad_norm': 1.127232313156128, 'learning_rate': 4.999993805919404e-05, 'epoch': 0.0}
+{'loss': 9.7415, 'grad_norm': 0.9390127658843994, 'learning_rate': 4.999993671997265e-05, 'epoch': 0.0}
+  File "/workspace/cl/training.py", line 52, in <module>
+    trainer.train()
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 2171, in train
+    return inner_training_loop(
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 2531, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 3675, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 3731, in compute_loss
+    outputs = model(**inputs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 16, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py", line 839, in forward
+    output = self._fsdp_wrapped_module(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/accelerate/utils/operations.py", line 819, in forward
+    return model_forward(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/accelerate/utils/operations.py", line 807, in __call__
+    return convert_to_fp32(self.model_forward(*args, **kwargs))
+  File "/usr/local/lib/python3.10/dist-packages/torch/amp/autocast_mode.py", line 16, in decorate_autocast
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/models/llama/modeling_llama.py", line 834, in forward
+    outputs = self.model(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/models/llama/modeling_llama.py", line 592, in forward
+    layer_outputs = decoder_layer(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py", line 839, in forward
+    output = self._fsdp_wrapped_module(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/models/llama/modeling_llama.py", line 335, in forward
+    hidden_states, self_attn_weights = self.self_attn(
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/models/llama/modeling_llama.py", line 291, in forward
+    attn_output, attn_weights = attention_interface(
+  File "/usr/local/lib/python3.10/dist-packages/transformers/integrations/flash_attention.py", line 50, in flash_attention_forward
+    attn_output = _flash_attention_forward(
+  File "/usr/local/lib/python3.10/dist-packages/transformers/modeling_flash_attention_utils.py", line 305, in _flash_attention_forward
+    query_states, key_states, value_states, indices_q, cu_seq_lens, max_seq_lens = _upad_input(
+  File "/usr/local/lib/python3.10/dist-packages/transformers/modeling_flash_attention_utils.py", line 102, in _upad_input
+    indices_k, cu_seqlens_k, max_seqlen_in_batch_k = _get_unpad_data(attention_mask)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/modeling_flash_attention_utils.py", line 53, in _get_unpad_data
+    indices = torch.nonzero(attention_mask.flatten(), as_tuple=False).flatten()
+KeyboardInterrupt

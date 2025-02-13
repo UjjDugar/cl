@@ -1,0 +1,11 @@
+{"time":"2025-02-13T22:56:36.48636467Z","level":"INFO","msg":"stream: starting","core version":"0.19.6","symlink path":"/workspace/cl/wandb/run-20250213_225636-ma3hdrsc/logs/debug-core.log"}
+{"time":"2025-02-13T22:56:36.60284313Z","level":"INFO","msg":"created new stream","id":"ma3hdrsc"}
+{"time":"2025-02-13T22:56:36.602877479Z","level":"INFO","msg":"stream: started","id":"ma3hdrsc"}
+{"time":"2025-02-13T22:56:36.6028936Z","level":"INFO","msg":"writer: Do: started","stream_id":"ma3hdrsc"}
+{"time":"2025-02-13T22:56:36.603024816Z","level":"INFO","msg":"sender: started","stream_id":"ma3hdrsc"}
+{"time":"2025-02-13T22:56:36.603079517Z","level":"INFO","msg":"handler: started","stream_id":"ma3hdrsc"}
+{"time":"2025-02-13T22:56:36.898902892Z","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-02-13T22:56:58.060822708Z","level":"INFO","msg":"stream: closing","id":"ma3hdrsc"}
+{"time":"2025-02-13T22:56:58.060877093Z","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-02-13T22:56:58.061975737Z","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-02-13T22:56:58.64201705Z","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}

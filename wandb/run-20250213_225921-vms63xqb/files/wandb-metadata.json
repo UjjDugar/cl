@@ -1,0 +1,48 @@
+{
+  "os":  "Linux-5.15.0-124-generic-x86_64-with-glibc2.35",
+  "python":  "CPython 3.10.12",
+  "startedAt":  "2025-02-13T22:59:21.536398Z",
+  "program":  "/workspace/cl/training.py",
+  "codePath":  "training.py",
+  "git":  {
+    "remote":  "https://github.com/UjjDugar/cl.git",
+    "commit":  "86a96ac4bf1d50e151146f50fbb7521852a3a9aa"
+  },
+  "email":  "ujjawaldugar@gmail.com",
+  "root":  "/workspace/cl",
+  "host":  "c4c593278b6a",
+  "executable":  "/usr/bin/python",
+  "codePathLocal":  "training.py",
+  "cpu_count":  104,
+  "cpu_count_logical":  208,
+  "gpu":  "NVIDIA H100 80GB HBM3",
+  "gpu_count":  2,
+  "disk":  {
+    "/":  {
+      "total":  "343597383680",
+      "used":  "38303891456"
+    }
+  },
+  "memory":  {
+    "total":  "2164135776256"
+  },
+  "cpu":  {
+    "count":  104,
+    "countLogical":  208
+  },
+  "gpu_nvidia":  [
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper"
+    },
+    {
+      "name":  "NVIDIA H100 80GB HBM3",
+      "memoryTotal":  "85520809984",
+      "cudaCores":  16896,
+      "architecture":  "Hopper"
+    }
+  ],
+  "cudaVersion":  "12.4"
+}

@@ -1,0 +1,68 @@
+[34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
+                                                                                                                                                                                                                         
+{'loss': 18.3034, 'grad_norm': 892.0, 'learning_rate': 4.99999999982096e-05, 'epoch': 0.0}
+{'loss': 17.0868, 'grad_norm': 414.0, 'learning_rate': 4.9999999992838386e-05, 'epoch': 0.0}
+{'loss': 13.315, 'grad_norm': 34.0, 'learning_rate': 4.999999998388636e-05, 'epoch': 0.0}
+{'loss': 13.1905, 'grad_norm': 52.25, 'learning_rate': 4.999999997135353e-05, 'epoch': 0.0}
+{'loss': 12.6604, 'grad_norm': 19.125, 'learning_rate': 4.9999999955239895e-05, 'epoch': 0.0}
+{'loss': 12.2939, 'grad_norm': 11.125, 'learning_rate': 4.9999999935545444e-05, 'epoch': 0.0}
+{'loss': 12.1236, 'grad_norm': 4.09375, 'learning_rate': 4.9999999912270184e-05, 'epoch': 0.0}
+{'loss': 12.1181, 'grad_norm': 4.21875, 'learning_rate': 4.999999988541412e-05, 'epoch': 0.0}
+{'loss': 12.0682, 'grad_norm': 4.40625, 'learning_rate': 4.999999985497724e-05, 'epoch': 0.0}
+{'loss': 11.9567, 'grad_norm': 0.828125, 'learning_rate': 4.999999982095956e-05, 'epoch': 0.0}
+{'loss': 11.9412, 'grad_norm': 1.4375, 'learning_rate': 4.999999978336107e-05, 'epoch': 0.0}
+{'loss': 11.8894, 'grad_norm': 0.9921875, 'learning_rate': 4.999999974218177e-05, 'epoch': 0.0}
+{'loss': 11.8427, 'grad_norm': 0.87109375, 'learning_rate': 4.999999969742165e-05, 'epoch': 0.0}
+{'loss': 11.8048, 'grad_norm': 1.0390625, 'learning_rate': 4.999999964908074e-05, 'epoch': 0.0}
+{'loss': 11.7193, 'grad_norm': 0.8984375, 'learning_rate': 4.999999959715901e-05, 'epoch': 0.0}
+{'loss': 11.6123, 'grad_norm': 1.03125, 'learning_rate': 4.9999999541656475e-05, 'epoch': 0.0}
+{'loss': 11.5143, 'grad_norm': 1.09375, 'learning_rate': 4.999999948257312e-05, 'epoch': 0.0}
+{'loss': 11.3881, 'grad_norm': 1.3046875, 'learning_rate': 4.9999999419908973e-05, 'epoch': 0.0}
+{'loss': 11.2352, 'grad_norm': 1.3203125, 'learning_rate': 4.9999999353664004e-05, 'epoch': 0.0}
+{'loss': 11.1688, 'grad_norm': 1.5390625, 'learning_rate': 4.999999928383824e-05, 'epoch': 0.0}
+{'loss': 11.004, 'grad_norm': 1.625, 'learning_rate': 4.999999921043166e-05, 'epoch': 0.0}
+{'loss': 10.9348, 'grad_norm': 1.5078125, 'learning_rate': 4.999999913344427e-05, 'epoch': 0.0}
+{'loss': 10.7665, 'grad_norm': 1.6640625, 'learning_rate': 4.9999999052876065e-05, 'epoch': 0.0}
+{'loss': 10.5908, 'grad_norm': 1.6796875, 'learning_rate': 4.9999998968727055e-05, 'epoch': 0.0}
+{'loss': 10.504, 'grad_norm': 1.6328125, 'learning_rate': 4.9999998880997244e-05, 'epoch': 0.0}
+{'loss': 10.399, 'grad_norm': 1.578125, 'learning_rate': 4.999999878968662e-05, 'epoch': 0.0}
+{'loss': 10.356, 'grad_norm': 1.78125, 'learning_rate': 4.9999998694795184e-05, 'epoch': 0.0}
+{'loss': 10.3572, 'grad_norm': 1.8359375, 'learning_rate': 4.999999859632294e-05, 'epoch': 0.0}
+{'loss': 10.3059, 'grad_norm': 1.71875, 'learning_rate': 4.99999984942699e-05, 'epoch': 0.0}
+{'loss': 10.381, 'grad_norm': 1.515625, 'learning_rate': 4.999999838863604e-05, 'epoch': 0.0}
+{'loss': 10.1689, 'grad_norm': 1.59375, 'learning_rate': 4.999999827942137e-05, 'epoch': 0.0}
+{'loss': 10.1383, 'grad_norm': 1.6875, 'learning_rate': 4.999999816662589e-05, 'epoch': 0.0}
+{'loss': 9.976, 'grad_norm': 1.5703125, 'learning_rate': 4.999999805024961e-05, 'epoch': 0.0}
+{'loss': 10.144, 'grad_norm': 1.609375, 'learning_rate': 4.999999793029251e-05, 'epoch': 0.0}
+{'loss': 10.209, 'grad_norm': 1.6953125, 'learning_rate': 4.9999997806754614e-05, 'epoch': 0.0}
+{'loss': 10.1185, 'grad_norm': 1.453125, 'learning_rate': 4.99999976796359e-05, 'epoch': 0.0}
+{'loss': 10.084, 'grad_norm': 1.703125, 'learning_rate': 4.9999997548936385e-05, 'epoch': 0.0}
+{'loss': 10.0652, 'grad_norm': 1.4921875, 'learning_rate': 4.999999741465605e-05, 'epoch': 0.0}
+{'loss': 10.1177, 'grad_norm': 1.4921875, 'learning_rate': 4.999999727679492e-05, 'epoch': 0.0}
+{'loss': 10.1351, 'grad_norm': 1.40625, 'learning_rate': 4.999999713535297e-05, 'epoch': 0.0}
+{'loss': 10.0077, 'grad_norm': 1.7734375, 'learning_rate': 4.9999996990330225e-05, 'epoch': 0.0}
+{'loss': 9.9879, 'grad_norm': 1.4296875, 'learning_rate': 4.9999996841726657e-05, 'epoch': 0.0}
+{'loss': 10.0416, 'grad_norm': 1.671875, 'learning_rate': 4.999999668954229e-05, 'epoch': 0.0}
+{'loss': 10.103, 'grad_norm': 1.5078125, 'learning_rate': 4.9999996533777115e-05, 'epoch': 0.0}
+{'loss': 9.9411, 'grad_norm': 1.609375, 'learning_rate': 4.999999637443112e-05, 'epoch': 0.0}
+{'loss': 9.9546, 'grad_norm': 1.6640625, 'learning_rate': 4.999999621150433e-05, 'epoch': 0.0}
+{'loss': 9.9016, 'grad_norm': 1.5390625, 'learning_rate': 4.9999996044996726e-05, 'epoch': 0.0}
+{'loss': 9.9326, 'grad_norm': 1.59375, 'learning_rate': 4.9999995874908316e-05, 'epoch': 0.0}
+{'loss': 10.0049, 'grad_norm': 1.5234375, 'learning_rate': 4.99999957012391e-05, 'epoch': 0.0}
+{'loss': 9.9413, 'grad_norm': 1.515625, 'learning_rate': 4.999999552398907e-05, 'epoch': 0.0}
+{'loss': 10.0699, 'grad_norm': 1.546875, 'learning_rate': 4.9999995343158236e-05, 'epoch': 0.0}
+  File "/workspace/cl/training.py", line 51, in <module>
+    trainer.train()
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 2171, in train
+    return inner_training_loop(
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 2531, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/usr/local/lib/python3.10/dist-packages/transformers/trainer.py", line 3712, in training_step
+    self.accelerator.backward(loss, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/accelerate/accelerator.py", line 2246, in backward
+    loss.backward(**kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/usr/local/lib/python3.10/dist-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+KeyboardInterrupt

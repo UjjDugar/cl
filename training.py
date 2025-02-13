@@ -3,9 +3,9 @@ import torch
 from datasets import load_dataset
 import wandb
 
-dsn = "UjjD/tts_mini_data"
+dsn = "UjjD/tts_dataset_1.05M_padded"
 model_name = "meta-llama/Llama-3.2-3B-Instruct"
-model = AutoModelForCausalLM.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16, attn_implementation="flash_attention_2")
 
 num_add_tokens = 4096*7 + 2
 
@@ -33,9 +33,10 @@ training_args = TrainingArguments(
     overwrite_output_dir=True,
     num_train_epochs=1,
     output_dir="./output",
-    per_device_train_batch_size=1,
+    per_device_train_batch_size=4,
     logging_steps=1,
     bf16=True,
+    # fsdp="auto_wrap",
     report_to="wandb",  # Enable wandb logging
     save_steps=8374,
     remove_unused_columns=True,
