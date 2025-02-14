@@ -38,7 +38,7 @@ training_args = TrainingArguments(
     bf16=True,
     # fsdp="auto_wrap",
     report_to="wandb",  # Enable wandb logging
-    save_steps=8374,
+    save_steps=1000,
     remove_unused_columns=True,
     lr_scheduler_type="cosine"
 )

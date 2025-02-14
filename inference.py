@@ -3,7 +3,7 @@ import torch
 
 # Load model and tokenizer
 og_model_path = "meta-llama/Llama-3.2-3B-Instruct"
-finetuned_model_path = "output/checkpoint-5000"
+finetuned_model_path = "output/checkpoint-16748"
 model = AutoModelForCausalLM.from_pretrained(finetuned_model_path)
 
 # Load tokenizer
