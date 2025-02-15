@@ -1,4 +1,4 @@
-# These lines are eeded for nebius for some reason
+# These lines are needed for nebius for some reason
 sudo apt update
 sudo apt install python3-pip
 export PATH=$HOME/.local/bin:$PATH 
