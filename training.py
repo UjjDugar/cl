@@ -41,6 +41,7 @@ training_args = TrainingArguments(
     logging_steps=1,
     bf16=True,
     learning_rate=learning_rate,
+    fsdp="auto_wrap",
     # fsdp="auto_wrap",
     report_to="wandb",  # Enable wandb logging
     save_steps=1000,
