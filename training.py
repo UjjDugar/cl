@@ -5,7 +5,7 @@ import wandb
 
 dsn = "UjjD/tts_dataset_1.05M_padded_text_labels_on"
 model_name = "meta-llama/Llama-3.2-3B-Instruct"
-model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16, attn_implementation="flash_attention_2")
+model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
 
 num_add_tokens = 4096*7 + 2
 
