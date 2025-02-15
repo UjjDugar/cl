@@ -75,6 +75,10 @@ class FSDPTrainer(Trainer):
         self.api = HfApi()
 
     def get_train_dataloader(self):
+
+        # Sampler is used to split the data across multiple GPUs
+        # By default, shuffle is true, which means indices are shuffled. This needs to turned off for the alternating dataset
+        # Not important for the TTS dataset
         sampler = AlternatingDistributedSampler(
             self.train_dataset,
             num_replicas=torch.distributed.get_world_size(),
@@ -92,14 +96,14 @@ class FSDPTrainer(Trainer):
             pin_memory=self.args.dataloader_pin_memory,
         )
 
-    def log(self, logs, start_time=None):
-        super().log(logs, start_time)
-        if self.is_world_process_zero():
-            global_step = self.state.global_step
-            if global_step % 2 == 0:
-                wandb.log({"text_loss": logs["loss"], "step": global_step})
-            else:
-                wandb.log({"audio_loss": logs["loss"], "step": global_step})
+    # def log(self, logs, start_time=None):
+    #     super().log(logs, start_time)
+    #     if self.is_world_process_zero():
+    #         global_step = self.state.global_step
+    #         if global_step % 2 == 0:
+    #             wandb.log({"text_loss": logs["loss"], "step": global_step})
+    #         else:
+    #             wandb.log({"audio_loss": logs["loss"], "step": global_step})
 
     def save_model(self, output_dir=None, _internal_call=False):
         if output_dir is None:
@@ -166,8 +170,9 @@ model.resize_token_embeddings(len(tokenizer))
 ds1 = load_dataset(dsn1, split="train")
 ds2 = load_dataset(dsn2, split="train")
 
-batch_total = batch_size * number_processes
-train_dataset = ds2 
+# batch_total = batch_size * number_processes
+# train_dataset = BatchedAlternatingDataset(ds1, ds2, batch_total)
+train_dataset = ds2 # Just the TTS dataset for now
 
 
 training_args = TrainingArguments(
@@ -177,7 +182,7 @@ training_args = TrainingArguments(
     logging_steps=1,
     fp16=True,
     output_dir=f"./{base_repo_id}",
-    fsdp="auto_wrap",
+    fsdp="auto_wrap", # This is a way of splitting the model into multiple GPUs. Data efficient
     report_to="wandb",
     save_steps=save_steps,
     remove_unused_columns=True,
@@ -189,9 +194,9 @@ training_args = TrainingArguments(
 trainer = FSDPTrainer(
     model=model,
     args=training_args,
-    train_dataset=train_dataset,
-    compute_metrics=compute_metrics,
-    data_collator=data_collator,
+    train_dataset=train_dataset, # A dataset is probs just an object with certain attributes and methods. So you can create your own
+    compute_metrics=compute_metrics, # Gets reported to wandb
+    data_collator=data_collator, # If you want to understand the exact purpose of the data collator, can look at Trainer / FSDPTrainer
 )
 
 trainer.train()
