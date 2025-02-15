@@ -37,16 +37,16 @@ learning_rate = config["learning_rate"]
 
 
 class BatchedAlternatingDataset(Dataset):
-    def _init_(self, dataset1, dataset2, batch_total):
+    def __init__(self, dataset1, dataset2, batch_total):
         self.dataset1 = dataset1
         self.dataset2 = dataset2
         self.batch_total = batch_total
         self.length = 2 * min(len(dataset1), len(dataset2))
 
-    def _len_(self):
+    def __len__(self):
         return self.length
 
-    def _getitem_(self, index):
+    def __getitem__(self, index):
         super_batch = index // (2 * self.batch_total)
         position_in_super_batch = index % (2 * self.batch_total)
 
@@ -60,19 +60,19 @@ class BatchedAlternatingDataset(Dataset):
 
 
 class AlternatingDistributedSampler(DistributedSampler):
-    def _init_(self, dataset, num_replicas=None, rank=None, shuffle=False):
-        super()._init_(dataset, num_replicas=num_replicas, rank=rank, shuffle=shuffle)
+    def __init__(self, dataset, num_replicas=None, rank=None, shuffle=False):
+        super().__init__(dataset, num_replicas=num_replicas, rank=rank, shuffle=shuffle)
         self.shuffle = shuffle
 
-    def _iter_(self):
+    def __iter__(self):
         indices = list(range(len(self.dataset)))
         indices = indices[self.rank:self.total_size:self.num_replicas]
         return iter(indices)
 
 
 class FSDPTrainer(Trainer):
-    def _init_(self, *args, **kwargs):
-        super()._init_(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.repo_id = base_repo_id
         self.api = HfApi()
 
@@ -153,6 +153,7 @@ def data_collator(features):
 
 
 wandb.init(project=project_name, name=run_name)
+
 
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 model = AutoModelForCausalLM.from_pretrained(
