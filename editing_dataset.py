@@ -3,7 +3,7 @@ from huggingface_hub import HfApi
 import numpy as np
 
 # Load the dataset
-dataset = load_dataset("UjjD/tts_minidataset_padded", split="train")
+dataset = load_dataset("UjjD/tts_dataset_1.05M_padded", split="train")
 
 def process_labels(example):
     # Convert to numpy arrays for easier manipulation
@@ -24,6 +24,6 @@ def process_labels(example):
 processed_dataset = dataset.map(process_labels)
 
 # Push to hub
-processed_dataset.push_to_hub("UjjD/tts_minidataset_padded_text_labels_on")
+processed_dataset.push_to_hub("UjjD/tts_dataset_1.05M_padded_text_labels_on")
 
 print("Dataset processed and uploaded successfully!")
