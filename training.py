@@ -13,6 +13,10 @@ model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
+learning_rate = 5e-4
+epochs = 1
+batch_size = 1
+
 dataset = load_dataset(dsn, split="train")
 dataset = dataset.shuffle(seed=42)
 
@@ -23,19 +27,20 @@ wandb.init(
     config={  # Track hyperparameters
         "model_name": model_name,
         "dataset": dsn,
-        "learning_rate": 9e-4,
-        "epochs": 1,
-        "batch_size": 1
+        "learning_rate": learning_rate,
+        "epochs": epochs,
+        "batch_size": batch_size
     }
 )
 
 training_args = TrainingArguments(
     overwrite_output_dir=True,
-    num_train_epochs=1,
+    num_train_epochs=epochs,
     output_dir="./output",
-    per_device_train_batch_size=4,
+    per_device_train_batch_size=batch_size,
     logging_steps=1,
     bf16=True,
+    learning_rate=learning_rate,
     # fsdp="auto_wrap",
     report_to="wandb",  # Enable wandb logging
     save_steps=1000,
