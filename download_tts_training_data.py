@@ -1,7 +1,7 @@
 from huggingface_hub import snapshot_download
 from datasets import load_dataset
 
-repo_id = "UjjD/tts_dataset_1.05M_padded_text_labels_on"
+repo_id = "amuvarma/text-messages-6m-processed-1-2g-8192l"
 
 snapshot_download(
     repo_id=repo_id,
