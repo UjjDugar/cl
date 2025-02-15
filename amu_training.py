@@ -95,7 +95,7 @@ class FSDPTrainer(Trainer):
         )
 
     def log(self, logs, start_time=None):
-        super().log(logs, start_time)
+        super().log(logs)
         if self.is_world_process_zero():
             global_step = self.state.global_step
             if global_step % 2 == 0:
