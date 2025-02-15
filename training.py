@@ -15,7 +15,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 learning_rate = 5e-5
 epochs = 1
-batch_size = 3
+batch_size = 1
 
 dataset = load_dataset(dsn, split="train")
 dataset = dataset.shuffle(seed=42)
