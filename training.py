@@ -13,7 +13,7 @@ model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-learning_rate = 5e-4
+learning_rate = 5e-5
 epochs = 1
 batch_size = 4
 
