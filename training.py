@@ -23,7 +23,7 @@ dataset = dataset.shuffle(seed=42)
 # Initialize wandb with project name and run name
 wandb.init(
     project="tts_zero_shot",  # Project name in wandb
-    name="text_labels_on",  # Name of this training run
+    name="text_labels_on_no_mistakes",  # Name of this training run
     config={  # Track hyperparameters
         "model_name": model_name,
         "dataset": dsn,
