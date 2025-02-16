@@ -161,8 +161,8 @@ model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="fl
 
 
 number_add_tokens = 7 * 4096 + 2
-# new_tokens = [f"<custom_token_{i}>" for i in range(0, number_add_tokens + 1)]
-# tokenizer.add_tokens(new_tokens)
+new_tokens = [f"<custom_token_{i}>" for i in range(0, number_add_tokens + 1)]
+tokenizer.add_tokens(new_tokens)
 model.resize_token_embeddings(len(tokenizer))
 
 
