@@ -15,7 +15,7 @@ learning_rate: 5.0e-5
 # TTS_dataset: "amuvarma/snac-10m-tts-combined"
 TTS_dataset_ujj: "UjjD/tts_dataset_1.05M_padded_text_labels_on"
 
-d# Naming and paths
+# Naming and paths
 save_folder: "checkpoints"
 project_name: "tts-amu"
 run_name: "llama-3.2-3B:snac10m:5e-5:ujj_dataset:instruct"
