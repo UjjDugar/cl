@@ -17,7 +17,7 @@ with open(config_file, "r") as file:
     config = yaml.safe_load(file)
 
 dsn1 = config["text_QA_dataset"]
-dsn2 = config["TTS_dataset"]
+dsn2 = config["TTS_dataset_ujj"]
 
 model_name = config["model_name"]
 tokenizer_name = config["tokenizer_name"]
