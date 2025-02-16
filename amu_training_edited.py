@@ -52,106 +52,106 @@ learning_rate = config["learning_rate"]
 #             dataset_index = super_batch * self.batch_total + position_in_super_batch
 #             return self.dataset1[dataset_index]
 #         else:
-#             dataset_index = super_batch * self.batch_total + \
+#             dataset_index = super_batch * selscreenf.batch_total + \
 #                 (position_in_super_batch - self.batch_total)
 #             return self.dataset2[dataset_index]
 
 
-# class AlternatingDistributedSampler(DistributedSampler):
-#     def _init_(self, dataset, num_replicas=None, rank=None, shuffle=False):
-#         super()._init_(dataset, num_replicas=num_replicas, rank=rank, shuffle=shuffle)
-#         self.shuffle = shuffle
+class AlternatingDistributedSampler(DistributedSampler):
+    def _init_(self, dataset, num_replicas=None, rank=None, shuffle=False):
+        super()._init_(dataset, num_replicas=num_replicas, rank=rank, shuffle=shuffle)
+        self.shuffle = shuffle
 
-#     def _iter_(self):
-#         indices = list(range(len(self.dataset)))
-#         indices = indices[self.rank:self.total_size:self.num_replicas]
-#         return iter(indices)
-
-
-# class FSDPTrainer(Trainer):
-#     def _init_(self, *args, **kwargs):
-#         super()._init_(*args, **kwargs)
-#         self.repo_id = base_repo_id
-#         self.api = HfApi()
-
-#     def get_train_dataloader(self):
-
-#         # Sampler is used to split the data across multiple GPUs
-#         # By default, shuffle is true, which means indices are shuffled. This needs to turned off for the alternating dataset
-#         # Not important for the TTS dataset
-#         sampler = AlternatingDistributedSampler(
-#             self.train_dataset,
-#             num_replicas=torch.distributed.get_world_size(),
-#             rank=torch.distributed.get_rank(),
-#             shuffle=False,
-#         )
-
-#         return DataLoader(
-#             self.train_dataset,
-#             batch_size=self.args.per_device_train_batch_size,
-#             sampler=sampler,
-#             collate_fn=self.data_collator,
-#             drop_last=self.args.dataloader_drop_last,
-#             num_workers=0,
-#             pin_memory=self.args.dataloader_pin_memory,
-#         )
-
-#     # def log(self, logs, start_time=None):
-#     #     super().log(logs, start_time)
-#     #     if self.is_world_process_zero():
-#     #         global_step = self.state.global_step
-#     #         if global_step % 2 == 0:
-#     #             wandb.log({"text_loss": logs["loss"], "step": global_step})
-#     #         else:
-#     #             wandb.log({"audio_loss": logs["loss"], "step": global_step})
-
-#     def save_model(self, output_dir=None, _internal_call=False):
-#         if output_dir is None:
-#             output_dir = self.args.output_dir
-#         self.save_and_push_model(output_dir)
-
-#     def save_and_push_model(self, output_dir):
-#         save_policy = FullStateDictConfig(offload_to_cpu=True, rank0_only=True)
-#         with FSDP.state_dict_type(self.model, StateDictType.FULL_STATE_DICT, save_policy):
-#             cpu_state_dict = self.model.state_dict()
-#         self.model.save_pretrained(output_dir, state_dict=cpu_state_dict)
+    def _iter_(self):
+        indices = list(range(len(self.dataset)))
+        indices = indices[self.rank:self.total_size:self.num_replicas]
+        return iter(indices)
 
 
-# def compute_metrics(eval_pred):
-#     predictions, labels = eval_pred
-#     predictions = np.argmax(predictions, axis=1)
-#     accuracy = (predictions == labels).mean()
-#     return {"accuracy": accuracy}
+class FSDPTrainer(Trainer):
+    def _init_(self, *args, **kwargs):
+        super()._init_(*args, **kwargs)
+        self.repo_id = base_repo_id
+        self.api = HfApi()
+
+    def get_train_dataloader(self):
+
+        # Sampler is used to split the data across multiple GPUs
+        # By default, shuffle is true, which means indices are shuffled. This needs to turned off for the alternating dataset
+        # Not important for the TTS dataset
+        sampler = AlternatingDistributedSampler(
+            self.train_dataset,
+            num_replicas=torch.distributed.get_world_size(),
+            rank=torch.distributed.get_rank(),
+            shuffle=False,
+        )
+
+        return DataLoader(
+            self.train_dataset,
+            batch_size=self.args.per_device_train_batch_size,
+            sampler=sampler,
+            collate_fn=self.data_collator,
+            drop_last=self.args.dataloader_drop_last,
+            num_workers=0,
+            pin_memory=self.args.dataloader_pin_memory,
+        )
+
+    # def log(self, logs, start_time=None):
+    #     super().log(logs, start_time)
+    #     if self.is_world_process_zero():
+    #         global_step = self.state.global_step
+    #         if global_step % 2 == 0:
+    #             wandb.log({"text_loss": logs["loss"], "step": global_step})
+    #         else:
+    #             wandb.log({"audio_loss": logs["loss"], "step": global_step})
+
+    def save_model(self, output_dir=None, _internal_call=False):
+        if output_dir is None:
+            output_dir = self.args.output_dir
+        self.save_and_push_model(output_dir)
+
+    def save_and_push_model(self, output_dir):
+        save_policy = FullStateDictConfig(offload_to_cpu=True, rank0_only=True)
+        with FSDP.state_dict_type(self.model, StateDictType.FULL_STATE_DICT, save_policy):
+            cpu_state_dict = self.model.state_dict()
+        self.model.save_pretrained(output_dir, state_dict=cpu_state_dict)
 
 
-# def data_collator(features):
-#     # max_length = 6144
-#     input_ids = [f["input_ids"] for f in features]
-
-#     if any("attention_mask" not in f for f in features):
-#         attention_mask = [[1]*len(ids) for ids in input_ids]
-#     else:
-#         attention_mask = [f["attention_mask"] for f in features]
-
-#     if any("labels" not in f for f in features):
-#         labels = input_ids
-#     else:
-#         labels = [f["labels"] for f in features]
+def compute_metrics(eval_pred):
+    predictions, labels = eval_pred
+    predictions = np.argmax(predictions, axis=1)
+    accuracy = (predictions == labels).mean()
+    return {"accuracy": accuracy}
 
 
-#     # input_ids = [ids[:max_length] for ids in input_ids]
-#     # attention_mask = [m[:max_length] for m in attention_mask]
-#     # labels = [l[:max_length] for l in labels]
+def data_collator(features):
+    # max_length = 6144
+    input_ids = [f["input_ids"] for f in features]
 
-#     # Convert all lists to tensors and pad
-#     input_ids = torch.nn.utils.rnn.pad_sequence([torch.tensor(
-#         i, dtype=torch.long) for i in input_ids], batch_first=True, padding_value=pad_token)
-#     attention_mask = torch.nn.utils.rnn.pad_sequence([torch.tensor(
-#         m, dtype=torch.long) for m in attention_mask], batch_first=True, padding_value=0)
-#     labels = torch.nn.utils.rnn.pad_sequence([torch.tensor(
-#         l, dtype=torch.long) for l in labels], batch_first=True, padding_value=-100)
+    if any("attention_mask" not in f for f in features):
+        attention_mask = [[1]*len(ids) for ids in input_ids]
+    else:
+        attention_mask = [f["attention_mask"] for f in features]
 
-#     return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
+    if any("labels" not in f for f in features):
+        labels = input_ids
+    else:
+        labels = [f["labels"] for f in features]
+
+
+    # input_ids = [ids[:max_length] for ids in input_ids]
+    # attention_mask = [m[:max_length] for m in attention_mask]
+    # labels = [l[:max_length] for l in labels]
+
+    # Convert all lists to tensors and pad
+    input_ids = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+        i, dtype=torch.long) for i in input_ids], batch_first=True, padding_value=pad_token)
+    attention_mask = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+        m, dtype=torch.long) for m in attention_mask], batch_first=True, padding_value=0)
+    labels = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+        l, dtype=torch.long) for l in labels], batch_first=True, padding_value=-100)
+
+    return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
 
 
 wandb.init(project=project_name, name=run_name)
@@ -190,8 +190,8 @@ training_args = TrainingArguments(
 )
 
 
-# trainer = FSDPTrainer(
-trainer = Trainer(
+trainer = FSDPTrainer(
+# trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=train_dataset, # A dataset is probs just an object with certain attributes and methods. So you can create your own
