@@ -124,46 +124,45 @@ learning_rate = config["learning_rate"]
 #     return {"accuracy": accuracy}
 
 
-def data_collator(features):
-    # max_length = 6144
-    input_ids = [f["input_ids"] for f in features]
+# def data_collator(features):
+#     # max_length = 6144
+#     input_ids = [f["input_ids"] for f in features]
 
-    if any("attention_mask" not in f for f in features):
-        attention_mask = [[1]*len(ids) for ids in input_ids]
-    else:
-        attention_mask = [f["attention_mask"] for f in features]
+#     if any("attention_mask" not in f for f in features):
+#         attention_mask = [[1]*len(ids) for ids in input_ids]
+#     else:
+#         attention_mask = [f["attention_mask"] for f in features]
 
-    if any("labels" not in f for f in features):
-        labels = input_ids
-    else:
-        labels = [f["labels"] for f in features]
+#     if any("labels" not in f for f in features):
+#         labels = input_ids
+#     else:
+#         labels = [f["labels"] for f in features]
 
 
-    # input_ids = [ids[:max_length] for ids in input_ids]
-    # attention_mask = [m[:max_length] for m in attention_mask]
-    # labels = [l[:max_length] for l in labels]
+#     # input_ids = [ids[:max_length] for ids in input_ids]
+#     # attention_mask = [m[:max_length] for m in attention_mask]
+#     # labels = [l[:max_length] for l in labels]
 
-    # Convert all lists to tensors and pad
-    input_ids = torch.nn.utils.rnn.pad_sequence([torch.tensor(
-        i, dtype=torch.long) for i in input_ids], batch_first=True, padding_value=pad_token)
-    attention_mask = torch.nn.utils.rnn.pad_sequence([torch.tensor(
-        m, dtype=torch.long) for m in attention_mask], batch_first=True, padding_value=0)
-    labels = torch.nn.utils.rnn.pad_sequence([torch.tensor(
-        l, dtype=torch.long) for l in labels], batch_first=True, padding_value=-100)
+#     # Convert all lists to tensors and pad
+#     input_ids = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+#         i, dtype=torch.long) for i in input_ids], batch_first=True, padding_value=pad_token)
+#     attention_mask = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+#         m, dtype=torch.long) for m in attention_mask], batch_first=True, padding_value=0)
+#     labels = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+#         l, dtype=torch.long) for l in labels], batch_first=True, padding_value=-100)
 
-    return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
+#     return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
 
 
 wandb.init(project=project_name, name=run_name)
 
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
-model = AutoModelForCausalLM.from_pretrained(
-    model_name, attn_implementation="flash_attention_2")
+model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
 
 
-number_add_tokens = 7 * 4096 + 10
-new_tokens = [f"<custom_token_{i}>" for i in range(0, number_add_tokens + 1)]
-tokenizer.add_tokens(new_tokens)
+number_add_tokens = 7 * 4096 + 2
+# new_tokens = [f"<custom_token_{i}>" for i in range(0, number_add_tokens + 1)]
+# tokenizer.add_tokens(new_tokens)
 model.resize_token_embeddings(len(tokenizer))
 
 
@@ -182,7 +181,7 @@ training_args = TrainingArguments(
     logging_steps=1,
     fp16=True,
     output_dir=f"./{base_repo_id}",
-    fsdp="auto_wrap", # This is a way of splitting the model into multiple GPUs. Data efficient
+    # fsdp="auto_wrap", # This is a way of splitting the model into multiple GPUs. Data efficient
     report_to="wandb",
     save_steps=save_steps,
     remove_unused_columns=True,
@@ -197,7 +196,7 @@ trainer = Trainer(
     args=training_args,
     train_dataset=train_dataset, # A dataset is probs just an object with certain attributes and methods. So you can create your own
     # compute_metrics=compute_metrics, # Gets reported to wandb
-    data_collator=data_collator, # If you want to understand the exact purpose of the data collator, can look at Trainer / FSDPTrainer
+    # data_collator=data_collator, # If you want to understand the exact purpose of the data collator, can look at Trainer / FSDPTrainer
 )
 
 trainer.train()
