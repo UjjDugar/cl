@@ -1,6 +1,6 @@
 # Model
-model_name: "meta-llama/Llama-3.2-3B-Instruct"  # Replace with your base model must be compatible with the tokenizer and transformers library
-tokenizer_name: "meta-llama/Llama-3.2-3B-Instruct"
+model_name: "meta-llama/Llama-3.2-3B"  # Replace with your base model must be compatible with the tokenizer and transformers library
+tokenizer_name: "meta-llama/Llama-3.2-3B"
 
 # Training Args
 epochs: 1
@@ -18,4 +18,4 @@ TTS_dataset_ujj: "UjjD/tts_dataset_1.05M_padded_text_labels_on"
 # Naming and paths
 save_folder: "checkpoints"
 project_name: "tts-amu"
-run_name: "llama-3.2-3B:snac10m:5e-5:ujj_dataset:instruct"
+run_name: "llama-3.2-3B:snac10m:5e-5:ujj_dataset:doublecheck"

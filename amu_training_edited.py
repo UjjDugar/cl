@@ -16,7 +16,7 @@ config_file = "PRETRAIN_ARGS-3b-10m.yaml"
 with open(config_file, "r") as file:
     config = yaml.safe_load(file)
 
-dsn1 = config["text_QA_dataset"]
+# dsn1 = config["text_QA_dataset"]
 dsn2 = config["TTS_dataset_ujj"]
 
 model_name = config["model_name"]
@@ -167,7 +167,7 @@ tokenizer.add_tokens(new_tokens)
 model.resize_token_embeddings(len(tokenizer))
 
 
-ds1 = load_dataset(dsn1, split="train")
+# ds1 = load_dataset(dsn1, split="train")
 ds2 = load_dataset(dsn2, split="train")
 
 # batch_total = batch_size * number_processes
