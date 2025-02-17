@@ -15,6 +15,30 @@ import yaml
 import wandb
 from huggingface_hub import HfApi
 
+config_file = "PRETRAIN_ARGS-3b-10m.yaml"
+
+with open(config_file, "r") as file:
+    config = yaml.safe_load(file)
+
+# dsn1 = config["text_QA_dataset"]
+dsn2 = config["TTS_dataset_ujj"]
+
+model_name = config["model_name"]
+tokenizer_name = config["tokenizer_name"]
+
+run_name = config["run_name"]
+project_name = config["project_name"]
+base_repo_id = config["save_folder"]
+
+epochs = config["epochs"]
+batch_size = config["batch_size"]
+save_steps = config["save_steps"]
+pad_token = config["pad_token"]
+number_processes = config["number_processes"]
+learning_rate = config["learning_rate"]
+
+base_repo_id = 'checkpoints'
+
 class AlternatingDistributedSampler(DistributedSampler):
     def _init_(self, dataset, num_replicas=None, rank=None, shuffle=False):
         super()._init_(dataset, num_replicas=num_replicas, rank=rank, shuffle=shuffle)
@@ -74,6 +98,38 @@ class FSDPTrainer(Trainer):
             cpu_state_dict = self.model.state_dict()
         self.model.save_pretrained(output_dir, state_dict=cpu_state_dict)
 
+
+def data_collator(features):
+    # max_length = 6144
+    input_ids = [f["input_ids"] for f in features]
+
+    if any("attention_mask" not in f for f in features):
+        attention_mask = [[1]*len(ids) for ids in input_ids]
+    else:
+        attention_mask = [f["attention_mask"] for f in features]
+
+    if any("labels" not in f for f in features):
+        labels = input_ids
+    else:
+        labels = [f["labels"] for f in features]
+
+
+    # input_ids = [ids[:max_length] for ids in input_ids]
+    # attention_mask = [m[:max_length] for m in attention_mask]
+    # labels = [l[:max_length] for l in labels]
+
+    # Convert all lists to tensors and pad
+    input_ids = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+        i, dtype=torch.long) for i in input_ids], batch_first=True, padding_value=pad_token)
+    attention_mask = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+        m, dtype=torch.long) for m in attention_mask], batch_first=True, padding_value=0)
+    labels = torch.nn.utils.rnn.pad_sequence([torch.tensor(
+        l, dtype=torch.long) for l in labels], batch_first=True, padding_value=-100)
+
+    return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
+
+
+
 dsn = "UjjD/tts_dataset_1.05M_padded_text_labels_on"
 model_name = "meta-llama/Llama-3.2-3B-Instruct"
 model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
@@ -84,46 +140,36 @@ model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-learning_rate = 5e-5
-epochs = 1
-batch_size = 4
+# learning_rate = 5e-5
+# epochs = 1
+# batch_size = 4
 
 dataset = load_dataset(dsn, split="train")
 dataset = dataset.shuffle(seed=42)
 
 # Initialize wandb with project name and run name
-wandb.init(
-    project="tts-amu",  # Project name in wandb
-    name="ujj-with_fsdp_trainer",  # Name of this training run
-    config={  # Track hyperparameters
-        "model_name": model_name,
-        "dataset": dsn,
-        "learning_rate": learning_rate,
-        "epochs": epochs,
-        "batch_size": batch_size
-    }
-)
+wandb.init(project=project_name,name=run_name)
 
 training_args = TrainingArguments(
     overwrite_output_dir=True,
     num_train_epochs=epochs,
-    output_dir="./output",
     per_device_train_batch_size=batch_size,
     logging_steps=1,
-    bf16=True,
-    learning_rate=learning_rate,
-    fsdp="auto_wrap",
-    # fsdp="auto_wrap",
-    report_to="wandb",  # Enable wandb logging
-    save_steps=1000,
+    fp16=True,
+    output_dir=f"./{base_repo_id}",
+    fsdp="auto_wrap", # This is a way of splitting the model into multiple GPUs. Data efficient
+    report_to="wandb",
+    save_steps=save_steps,
     remove_unused_columns=True,
+    learning_rate=learning_rate,
     lr_scheduler_type="cosine"
 )
 
-trainer = Trainer(
+trainer = FSDPTrainer(
     model=model,
     args=training_args,
     train_dataset=dataset,
+    data_collator=data_collator,
 )
 
 trainer.train()
