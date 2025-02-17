@@ -190,8 +190,8 @@ training_args = TrainingArguments(
 )
 
 
-trainer = FSDPTrainer(
-# trainer = Trainer(
+# trainer = FSDPTrainer(
+trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=train_dataset, # A dataset is probs just an object with certain attributes and methods. So you can create your own
