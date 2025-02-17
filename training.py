@@ -18,12 +18,12 @@ epochs = 1
 batch_size = 4
 
 dataset = load_dataset(dsn, split="train")
-dataset = dataset.shuffle(seed=42)
+# dataset = dataset.shuffle(seed=42)
 
 # Initialize wandb with project name and run name
 wandb.init(
     project="tts-amu",  # Project name in wandb
-    name="ujj-original",  # Name of this training run
+    name="ujj-original-unshuffled",  # Name of this training run
     config={  # Track hyperparameters
         "model_name": model_name,
         "dataset": dsn,
