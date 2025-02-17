@@ -181,7 +181,7 @@ training_args = TrainingArguments(
     logging_steps=1,
     fp16=True,
     output_dir=f"./{base_repo_id}",
-    # fsdp="auto_wrap", # This is a way of splitting the model into multiple GPUs. Data efficient
+    fsdp="auto_wrap", # This is a way of splitting the model into multiple GPUs. Data efficient
     report_to="wandb",
     save_steps=save_steps,
     remove_unused_columns=True,
@@ -196,7 +196,7 @@ trainer = FSDPTrainer(
     args=training_args,
     train_dataset=train_dataset, # A dataset is probs just an object with certain attributes and methods. So you can create your own
     # compute_metrics=compute_metrics, # Gets reported to wandb
-    # data_collator=data_collator, # If you want to understand the exact purpose of the data collator, can look at Trainer / FSDPTrainer
+    data_collator=data_collator, # If you want to understand the exact purpose of the data collator, can look at Trainer / FSDPTrainer
 )
 
 trainer.train()
