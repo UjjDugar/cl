@@ -18,4 +18,4 @@ TTS_dataset_ujj: "UjjD/tts_dataset_1.05M_padded_text_labels_on"
 # Naming and paths
 save_folder: "checkpoints"
 project_name: "tts-fresh-comparisons"
-run_name: "ujj_dataset:instruct:script_very_similar_to_amu"
+run_name: "ujj_dataset:instruct:amu_script"
