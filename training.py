@@ -15,15 +15,15 @@ tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 learning_rate = 5e-5
 epochs = 1
-batch_size = 1
+batch_size = 4
 
 dataset = load_dataset(dsn, split="train")
 dataset = dataset.shuffle(seed=42)
 
 # Initialize wandb with project name and run name
 wandb.init(
-    project="tts_zero_shot",  # Project name in wandb
-    name="text_labels_on_no_mistakes",  # Name of this training run
+    project="tts-amu",  # Project name in wandb
+    name="ujj-original",  # Name of this training run
     config={  # Track hyperparameters
         "model_name": model_name,
         "dataset": dsn,
