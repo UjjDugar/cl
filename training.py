@@ -21,7 +21,6 @@ with open(config_file, "r") as file:
     config = yaml.safe_load(file)
 
 dsn = config["training_dataset"]
-
 model_name = config["model_name"]
 tokenizer_name = config["tokenizer_name"]
 
@@ -36,11 +35,9 @@ save_steps = config["save_steps"]
 number_processes = config["number_processes"]
 learning_rate = config["learning_rate"]
 
-base_repo_id = 'checkpoints'
-
 model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
 
-num_add_tokens = 4096*7 + 2 # +2 for Ujj data, + 10 for Amu
+num_add_tokens = 4096*7 + 3
 model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
