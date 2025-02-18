@@ -43,7 +43,7 @@ model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="fl
 num_add_tokens = 4096*7 + 2 # +2 for Ujj data, + 10 for Amu
 model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
 dataset = load_dataset(dsn, split="train")
 dataset = dataset.shuffle(seed=42)
@@ -55,7 +55,7 @@ training_args = TrainingArguments(
     overwrite_output_dir=True,
     num_train_epochs=epochs,
     per_device_train_batch_size=batch_size,
-    logging_steps=1,
+    logging_steps=5,
     fp16=True,
     output_dir=f"./{base_repo_id}",
     fsdp="auto_wrap",
