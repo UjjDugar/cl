@@ -3,9 +3,8 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
 
-base_repo_id = "output/checkpoint-32813"
-upload_name = "UjjD/tts-checkpoint32813-llama3b"
-
+base_repo_id = "output/checkpoint-24000"
+upload_name = "UjjD/tts-24000cp-IMPROVED-llama3binstruct-ujj_dataset"
 
 def upload_single_file(args):
     api, file_path, rel_path, repo_id, commit_message = args
