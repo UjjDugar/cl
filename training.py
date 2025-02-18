@@ -32,7 +32,7 @@ base_repo_id = config["save_folder"]
 epochs = config["epochs"]
 batch_size = config["batch_size"]
 save_steps = config["save_steps"]
-pad_token = config["pad_token"]
+# pad_token = config["pad_token"]
 number_processes = config["number_processes"]
 learning_rate = config["learning_rate"]
 
