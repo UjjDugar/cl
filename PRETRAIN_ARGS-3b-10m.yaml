@@ -13,9 +13,9 @@ learning_rate: 5.0e-5
 # Datasets
 # text_QA_dataset: "amuvarma/text-messages-6m-processed-1-2g-8192l"
 # TTS_dataset: "amuvarma/snac-10m-tts-combined"
-TTS_dataset_ujj: "UjjD/tts_dataset_1.05M_padded_text_labels_on"
+TTS_dataset_ujj: "amuvarma/snac-10m-tts-combined" # "UjjD/tts_dataset_1.05M_padded_text_labels_on"
 
 # Naming and paths
 save_folder: "checkpoints"
-project_name: "tts-fresh-comparisons"
-run_name: "ujj_dataset:NOT_instruct:amu_script"
+project_name: "tts-fresh-comparisons-2"
+run_name: "AMU_dataset:NOT_instruct:amu_script"
