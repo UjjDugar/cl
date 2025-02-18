@@ -117,11 +117,11 @@ class FSDPTrainer(Trainer):
         self.model.save_pretrained(output_dir, state_dict=cpu_state_dict)
 
 
-def compute_metrics(eval_pred):
-    predictions, labels = eval_pred
-    predictions = np.argmax(predictions, axis=1)
-    accuracy = (predictions == labels).mean()
-    return {"accuracy": accuracy}
+# def compute_metrics(eval_pred):
+#     predictions, labels = eval_pred
+#     predictions = np.argmax(predictions, axis=1)
+#     accuracy = (predictions == labels).mean()
+#     return {"accuracy": accuracy}
 
 
 def data_collator(features):
@@ -160,7 +160,7 @@ tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
 
 
-number_add_tokens = 7 * 4096 + 2
+number_add_tokens = 7 * 4096 + 10
 new_tokens = [f"<custom_token_{i}>" for i in range(0, number_add_tokens + 1)]
 tokenizer.add_tokens(new_tokens)
 model.resize_token_embeddings(len(tokenizer))
