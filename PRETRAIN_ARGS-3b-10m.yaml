@@ -18,4 +18,4 @@ TTS_dataset_ujj: "amuvarma/snac-10m-tts-combined" #"UjjD/tts_dataset_1.05M_padde
 # Naming and paths
 save_folder: "checkpoints"
 project_name: "tts-fresh-comparisons-2"
-run_name: "AMU_dataset:NOT_instruct:amu_script"
+run_name: "AMU_dataset:NOT_instruct:ujj_script:no_FSDP_trainer:no_data_collator"

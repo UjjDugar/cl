@@ -130,7 +130,7 @@ base_repo_id = 'checkpoints'
 
 model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
 
-num_add_tokens = 4096*7 + 2
+num_add_tokens = 4096*7 + 10 # +2 for Ujj data, + 10 for Amu
 
 model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 
