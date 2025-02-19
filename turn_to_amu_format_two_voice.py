@@ -34,11 +34,11 @@ for row in dataset:
     # Recombine with special tokens
     input_ids_updated = np.concatenate([
         input_speech_updated,
-        [input_speech_to_input_text_token_id],
+        [128256],
         input_text,
-        [input_text_to_output_speech_token_id],
+        [128257],
         output_speech,
-        [end_of_output_speech_token_id]
+        [128258]
     ])
 
     # Create labels (-100 for input tokens, actual values for output tokens)
