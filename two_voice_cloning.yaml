@@ -13,9 +13,9 @@ learning_rate: 5.0e-5
 # Datasets
 # text_QA_dataset: "amuvarma/text-messages-6m-processed-1-2g-8192l"
 # TTS_dataset: "amuvarma/snac-10m-tts-combined"
-training_dataset: "UjjD/zuck_and_luna_zero_shot" #"UjjD/tts_dataset_1.05M_padded_text_labels_on"
+training_dataset: "UjjD/zuck_and_luna_zero_shot.amu_format" #"UjjD/tts_dataset_1.05M_padded_text_labels_on"
 
 # Naming and paths
 save_folder: "checkpoints"
-project_name: "two-voice-cloning.10m-model.zuck-luna"
+project_name: "two-voice-cloning.10m-model.zuck-luna.amu_format"
 run_name: "lr:5e-5"
