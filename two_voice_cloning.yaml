@@ -17,5 +17,5 @@ training_dataset: "UjjD/zuck_and_luna_zero_shot" #"UjjD/tts_dataset_1.05M_padded
 
 # Naming and paths
 save_folder: "checkpoints"
-project_name: "two-voice-cloning:10m-model:zuck-luna"
+project_name: "two-voice-cloning.10m-model.zuck-luna"
 run_name: "lr:5e-5"
