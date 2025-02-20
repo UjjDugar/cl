@@ -18,4 +18,4 @@ training_dataset: "UjjD/zero_shot_proper_format" #"UjjD/tts_dataset_1.05M_padded
 # Naming and paths
 save_folder: "checkpoints"
 project_name: "zero_shot_voice_cloning"
-run_name: "lr 5e-6 text-tokens-on"
+run_name: "lr 5e-6 text-tokens-on random-resampling-method"
