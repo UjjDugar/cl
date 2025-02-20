@@ -1,7 +1,7 @@
 from huggingface_hub import snapshot_download
 from datasets import load_dataset
 
-repo_id = "amuvarma/3b-10m-pretrain-full"
+repo_id = "parler-tts/libritts_r_filtered"
 
 snapshot_download(
     repo_id=repo_id,
@@ -10,4 +10,6 @@ snapshot_download(
     max_workers=64         
 )
 
-load_dataset(repo_id, split="train")
+dataset = load_dataset(repo_id, split='dev.clean') 
+
+print(len(dataset))

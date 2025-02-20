@@ -30,6 +30,7 @@ for row in dataset:
 
     # Add 10 to input_speech tokens
     input_speech_updated = input_speech + 10
+    output_speech_updated = output_speech + 10
 
     # Recombine with special tokens
     input_ids_updated = np.concatenate([
@@ -37,7 +38,7 @@ for row in dataset:
         [128256],
         input_text,
         [128257],
-        output_speech,
+        output_speech_updated,
         [128258]
     ])
 

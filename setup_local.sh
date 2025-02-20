@@ -7,3 +7,4 @@ pip install torch==2.5.1
 pip install transformers==4.46.3
 pip install flash_attn==2.7.3
 pip install trl==0.11.3
+export ELEVENLABS_API_KEY="sk_af7dc420ea22e0fe192d799fb6142bd14a731a0ea3e852d6"                 
