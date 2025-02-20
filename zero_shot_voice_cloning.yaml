@@ -14,6 +14,6 @@ learning_rate: 5.0e-7
 training_dataset: "UjjD/zero_shot_tsts"
 
 # Naming and paths
-save_folder: "checkpoints"
+save_folder: "checkpoints2"
 project_name: "zero_shot_voice_cloning"
 run_name: "lr 5e-7 zero_shot_tsts"
