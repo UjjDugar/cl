@@ -3,8 +3,8 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
 
-base_repo_id = "checkpoints/checkpoint-422"
-upload_name = "UjjD/two-voice-on-10m-tts-trained-llama3bI-amu-format"
+base_repo_id = "checkpoints/checkpoint-852"
+upload_name = "UjjD/voice-cloning-on-10m-tts-trained-llama3bI"
 
 def upload_single_file(args):
     api, file_path, rel_path, repo_id, commit_message = args
