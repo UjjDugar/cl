@@ -35,7 +35,7 @@ save_steps = config["save_steps"]
 number_processes = config["number_processes"]
 learning_rate = config["learning_rate"]
 
-model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2",torch_dtype=torch.bfloat16)
+model = AutoModelForCausalLM.from_pretrained(model_name, attn_implementation="flash_attention_2")
 
 num_add_tokens = 4096*7 + 10
 model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
