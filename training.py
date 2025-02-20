@@ -43,7 +43,7 @@ model.resize_token_embeddings(model.config.vocab_size + num_add_tokens)
 tokenizer = AutoTokenizer.from_pretrained(tokenizer_name)
 
 dataset = load_dataset(dsn, split="train")
-dataset = dataset.shuffle(seed=42)
+dataset = dataset.shuffle(seed=41)
 
 # Initialize wandb with project name and run name
 wandb.init(project=project_name,name=run_name)
