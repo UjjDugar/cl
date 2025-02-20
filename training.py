@@ -15,6 +15,14 @@ import yaml
 import wandb
 from huggingface_hub import HfApi
 
+print("\n=== CUDA Information ===")
+print(f"CUDA available: {torch.cuda.is_available()}")
+print(f"Current device: {torch.cuda.current_device()}")
+print(f"Number of GPUs: {torch.cuda.device_count()}")
+for i in range(torch.cuda.device_count()):
+    print(f"GPU {i}: {torch.cuda.get_device_name(i)}")
+print("=====================\n")
+
 config_file = "zero_shot_voice_cloning.yaml"
 
 with open(config_file, "r") as file:
