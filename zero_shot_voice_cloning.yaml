@@ -11,9 +11,9 @@ save_steps: 284
 learning_rate: 5.0e-7
 
 # Datasets
-training_dataset: "UjjD/zero_shot_proper_format_amu_tokens"
+training_dataset: "UjjD/zero_shot_tsts"
 
 # Naming and paths
 save_folder: "checkpoints"
 project_name: "zero_shot_voice_cloning"
-run_name: "lr 5e-7 text-tokens-on random-resampling-method amu-token_structure"
+run_name: "lr 5e-7 zero_shot_tsts"
